@@ -1,0 +1,71 @@
+body {
+    background-color: black;
+    margin: 1vmax 2vmax;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#question {
+    margin-top: 1vmax;
+    margin-right: 1vmax;
+    height: 2vmax;
+}
+
+button {
+    background-color: #4CAF50;
+    margin-top: 1vmax;
+    border: none;
+    color: white;
+    padding: 0.5vmax 0.5vmax;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button:hover {
+    cursor: pointer;
+    color: yellow;
+    background-color: brown;
+}
+
+.loading {
+    color: aliceblue;
+    text-align: center;
+    padding-top: 2vmax;
+}
+
+.question {
+    color: white;
+    margin: 1vmax;
+}
+
+a {
+    text-decoration: none;
+    color: skyblue;
+}
+
+.linet {
+    border-top: 1px solid white;
+    padding-top: 1.5vmax;
+}
+
+a:hover {
+    color: aquamarine;
+    text-decoration-line: underline;
+}
+
+.title {
+    color: rgb(59, 193, 59);
+}

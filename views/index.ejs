@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoSearch</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <h1>AlgoSearch</h1>
+    <form class="box">
+        <input type="text" name="question" id="question" placeholder="Search...">
+        <button value="Search">Submit</button>
+    </form>
+
+    <div class="loading"></div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+
+    <div class="question">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="body"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const form = document.querySelector("form");
+    const questionElement = form.question;
+
+    const questions = document.querySelectorAll(".question");
+    const titles = document.querySelectorAll(".title");
+    const urls = document.querySelectorAll(".url");
+    const body = document.querySelectorAll(".body");
+    const loadingDiv = document.querySelector(".loading");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const question = questionElement.value;
+        for (let i = 0; i < 10; i++) {
+            titles[i].innerHTML = ``;
+            urls[i].innerHTML = ``;
+            body[i].innerHTML = ``;
+        }
+        loadingDiv.innerHTML = `Loading...`;
+
+        //fetch
+        try {
+            const res = await fetch(`/search?question=${question}`, { method: "GET" });
+            const data = await res.json();
+            loadingDiv.innerHTML = `Result`;
+            for (let i = 0; i < 10; i++) {
+                titles[i].innerHTML = `<h3 class="linet">${data['Title'][i]}</h3>`;
+                urls[i].innerHTML = `<h4><a href="${data['URL'][i]}">Click Me to view the problem statement</h4>`;
+                body[i].innerHTML = `${data['Description'][i]}`;
+                if (!body[i].innerHTML) {
+                    body[i].innerHTML = `Problem Statement is Locked as it is a Leetcode Premium Problem`;
+                }
+            }
+
+        } catch (error) {
+            alert(error);
+        }
+    });
+</script>
